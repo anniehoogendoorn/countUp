@@ -1,7 +1,19 @@
-var countUp = function() {
+var countUp = function(toNumber, byNumber) {
   var returnedArray = [];
-  for (var i = 2; i <= 10; i += 2) {
-    returnedArray.push(i);
+  for (var i = byNumber; i <= toNumber; i += byNumber) {
+    returnedArray.push(' ' + i);
   }
-  return returnedArray;
+  return returnedArray ;
 };
+
+$(document).ready(function() {
+  $("form#counter").submit(function(event) {
+    var toNumber = parseInt($("input#toNumber").val());
+    var byNumber = parseInt($("input#byNumber").val());
+    var result = countUp(toNumber, byNumber);
+
+    $("#result").text(result);
+    $("#results").show();
+    event.preventDefault();
+  });
+});
